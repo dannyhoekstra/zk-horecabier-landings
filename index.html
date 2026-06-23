@@ -1,0 +1,35 @@
+<!DOCTYPE html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Horecabier — Previews</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;700;800&family=Archivo:wght@400;500&display=swap" rel="stylesheet">
+<style>*{margin:0;box-sizing:border-box}body{font-family:Archivo,sans-serif;background:#112337;color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px}
+h1{font-family:Jost,sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.02em;font-size:clamp(30px,5vw,52px);color:#fff;text-align:center}
+.sub{color:#ffda00;font-family:Jost,sans-serif;font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:13px;margin-bottom:10px}
+.cards{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;margin-top:40px}
+.card{background:#16294a;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:34px 30px;width:300px;text-decoration:none;color:#fff;transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-6px);border-color:#ffda00}
+.card .tag{display:inline-block;background:#ffda00;color:#112337;font-family:Jost,sans-serif;font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border-radius:6px;margin-bottom:16px}
+.card h2{font-family:Jost,sans-serif;font-weight:800;text-transform:uppercase;font-size:26px;margin-bottom:8px}
+.card p{color:rgba(255,255,255,.7);font-size:14px}
+.card .go{margin-top:18px;color:#ffda00;font-family:Jost,sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+footer{margin-top:48px;color:rgba(255,255,255,.4);font-size:12px;font-family:Jost,sans-serif;letter-spacing:.1em;text-transform:uppercase}</style></head>
+<body>
+<div id="hbgate" style="position:fixed;inset:0;z-index:99999;background:#112337;display:flex;align-items:center;justify-content:center">
+<div style="text-align:center;max-width:340px;padding:28px;font-family:Jost,Arial,sans-serif">
+<div style="font-weight:800;font-size:26px;letter-spacing:.16em;color:#ffda00;text-transform:uppercase">Horecabier</div>
+<p style="color:#fff;opacity:.8;margin:14px 0 22px;font-size:14px">Beveiligde preview. Vul het wachtwoord in.</p>
+<input id="hbpw" type="password" placeholder="Wachtwoord" autofocus style="width:100%;padding:14px 16px;border-radius:8px;border:none;font-size:15px;outline:none;margin-bottom:12px;box-sizing:border-box">
+<button id="hbbtn" style="width:100%;padding:14px;border:none;border-radius:8px;background:#ffda00;color:#112337;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">Bekijken</button>
+<div id="hberr" style="color:#ff9b8a;font-size:13px;margin-top:10px;height:16px"></div></div></div>
+<script>(function(){function ok(){sessionStorage.setItem("hbok","1");var g=document.getElementById("hbgate");if(g)g.remove();document.documentElement.style.overflow="";}
+if(sessionStorage.getItem("hbok")==="1"){ok();return;}document.documentElement.style.overflow="hidden";
+function chk(){if(document.getElementById("hbpw").value==="hb2026"){ok();}else{document.getElementById("hberr").textContent="Onjuist wachtwoord";}}
+document.getElementById("hbbtn").onclick=chk;
+document.getElementById("hbpw").addEventListener("keydown",function(e){if(e.key==="Enter")chk();});})();</script>
+<div class="sub">Horecabier · Landingspagina previews</div>
+<h1>Kies een preview</h1>
+<div class="cards">
+<a class="card" href="hard-iced-tea.html"><span class="tag">Campagne</span><h2>Hard Iced Tea</h2><p>Landingspagina voor de Hard Iced Tea op 20L fust (Lemon &amp; Peach).</p><div class="go">Bekijken →</div></a>
+<a class="card" href="proefpakket.html"><span class="tag">Acquisitie</span><h2>Gratis proefpakket</h2><p>Landingspagina voor het gratis proefpakket en de besparing.</p><div class="go">Bekijken →</div></a>
+</div>
+<footer>Voorbeelden · Zwarte Kraai</footer>
+</body></html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Horecabier — Hard Iced Tea</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Jost ≈ ITC Avant Garde (headings) · Archivo ≈ Acumin Pro (body) — matched to horecabier.nl -->
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#ed7328;
+  --orange-deep:#cf5f1b;
+  --maroon:#7a1c12;
+  --lemon:#8bbf3c;
+  --lemon-deep:#5e9024;
+  --hb-yellow:#ffda00;     /* Horecabier huiskleur */
+  --hb-gold:#e0ba00;
+  --ink:#3c3c3b;           /* Horecabier tekstkleur */
+  --navy:#112337;          /* Horecabier donker */
+  --cream:#fbf6ef;
+  --white:#ffffff;
+  --font-head:'Jost',sans-serif;
+  --font-body:'Archivo',sans-serif;
+  --maxw:1180px;
+  --gap:clamp(64px,8vw,112px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--font-head);font-weight:800;text-transform:uppercase;line-height:.96;letter-spacing:-.01em}
+.label{font-family:var(--font-head);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.24em}
+
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-head);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.12em;padding:17px 36px;border-radius:40px;cursor:pointer;border:2px solid transparent;transition:transform .22s,box-shadow .22s,background .22s,color .22s}
+.btn-orange{background:var(--orange);color:#fff}
+.btn-orange:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(237,115,40,.4)}
+.btn-yellow{background:var(--hb-yellow);color:var(--ink)}
+.btn-yellow:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(255,218,0,.5)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(0,0,0,.25)}
+.btn-ghost{background:transparent;border-color:#fff;color:#fff}
+.btn-ghost:hover{background:#fff;color:var(--ink);transform:translateY(-3px)}
+.btn .arrow{transition:transform .22s}.btn:hover .arrow{transform:translateX(5px)}
+
+/* echte Horecabier logo (geel wordmark + tagline, op donkere balk) */
+.brand{display:flex;align-items:center;gap:11px}
+.logo-img{height:38px;width:auto}
+
+header{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;align-items:center;justify-content:space-between;padding:16px clamp(20px,5vw,52px);transition:background .3s,box-shadow .3s,padding .3s}
+header.scrolled{background:rgba(17,35,55,.94);backdrop-filter:blur(10px);padding:11px clamp(20px,5vw,52px)}
+nav ul{display:flex;gap:34px;list-style:none}
+nav a{font-family:var(--font-head);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.16em;color:#fff;opacity:.92;position:relative}
+nav a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--hb-yellow);transition:width .25s}
+nav a:hover::after{width:100%}
+.nav-cta{padding:12px 24px;font-size:12px}
+
+/* hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;
+  background:url('img/hb_mixed_loose.jpg') center/cover no-repeat, var(--orange)}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(100deg,rgba(207,95,27,.97) 0%,rgba(237,115,40,.78) 46%,rgba(237,115,40,.12) 100%)}
+.hero-grid{position:relative;z-index:3;max-width:var(--maxw);margin:0 auto;width:100%;padding:120px clamp(20px,5vw,40px) 80px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:10px}
+.badge-new{display:inline-block;background:var(--maroon);color:#fff;font-family:var(--font-head);font-weight:700;font-size:14px;letter-spacing:.18em;padding:8px 20px;border-radius:8px;transform:rotate(-3deg);margin-bottom:20px}
+.hero h1{color:#fff;font-size:clamp(48px,8vw,104px);text-shadow:0 6px 30px rgba(0,0,0,.2)}
+.hero .sub{font-family:var(--font-head);font-weight:700;font-size:clamp(20px,3vw,34px);color:#fff;background:var(--navy);display:inline-block;padding:6px 18px;border-radius:6px;margin:14px 0 16px;letter-spacing:.01em;text-transform:uppercase}
+.hero p{color:#fff;font-size:18px;max-width:44ch;margin-bottom:22px;text-shadow:0 2px 10px rgba(0,0,0,.2)}
+.chips{display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap}
+.fchip{display:inline-flex;align-items:center;gap:9px;background:#fff;color:var(--ink);padding:10px 18px;border-radius:30px;font-family:var(--font-head);font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 8px 18px rgba(0,0,0,.12)}
+.fchip .d{width:13px;height:13px;border-radius:50%}
+.fchip.lemon .d{background:var(--lemon)}.fchip.peach .d{background:var(--orange)}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-visual{position:relative;display:flex;justify-content:center;align-items:center;min-height:560px}
+.hero-visual .fust{position:relative;z-index:2;height:clamp(380px,64vh,580px);width:auto;filter:drop-shadow(0 30px 46px rgba(0,0,0,.42))}
+.hero-visual .pricetag{position:absolute;z-index:3;top:13%;right:-2%;background:var(--maroon);color:#fff;border-radius:14px;padding:14px 20px;text-align:center;transform:rotate(4deg);box-shadow:0 12px 24px rgba(0,0,0,.25)}
+.hero-visual .pricetag .t{font-family:var(--font-head);font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+.hero-visual .pricetag .p{font-family:var(--font-head);font-weight:800;font-size:40px;line-height:.95;margin:2px 0}
+.hero-visual .pricetag .s{font-size:11px;opacity:.85}
+.scroll-ind{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:4;width:44px;height:44px;border:1.5px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
+
+.usp{background:var(--navy);color:#fff;font-family:var(--font-head);font-weight:500;font-size:13px;letter-spacing:.16em;text-transform:uppercase;text-align:center;padding:16px;display:flex;gap:26px;justify-content:center;flex-wrap:wrap}
+.usp .sep{color:var(--hb-yellow)}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:var(--gap) clamp(20px,5vw,40px)}
+.head{text-align:center;max-width:680px;margin:0 auto 50px}
+.head .label{color:var(--orange)}
+.head h2{font-size:clamp(34px,5vw,60px);color:var(--navy);margin-top:14px}
+.head h2 .lem{color:var(--lemon-deep)}.head h2 .pea{color:var(--orange)}
+.head p{margin-top:14px;color:#6a635e}
+
+.flavors{display:grid;grid-template-columns:1fr 1fr;gap:30px;max-width:940px;margin:0 auto}
+.flavor{position:relative;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 22px 40px rgba(0,0,0,.10);transition:transform .28s,box-shadow .28s}
+.flavor:nth-child(1){transform:rotate(-1.5deg)}.flavor:nth-child(2){transform:rotate(1.5deg)}
+.flavor:hover{transform:rotate(0) translateY(-8px);box-shadow:0 32px 56px rgba(0,0,0,.18)}
+.flavor .ribbon{position:absolute;z-index:2;top:16px;left:16px;font-family:var(--font-head);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#fff;padding:7px 16px;border-radius:30px}
+.flavor.lemon .ribbon{background:var(--lemon)}.flavor.peach .ribbon{background:var(--orange)}
+.flavor img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.flavor .cap{padding:18px 22px 22px;display:flex;align-items:center;justify-content:space-between}
+.flavor .cap h3{font-size:30px}
+.flavor.lemon .cap h3{color:var(--lemon-deep)}.flavor.peach .cap h3{color:var(--orange)}
+.flavor .cap .meta{font-family:var(--font-head);font-weight:500;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8a827c;text-align:right}
+
+.voordelen{background:var(--orange);position:relative;overflow:hidden}
+.voordelen::after{content:"";position:absolute;inset:0;background:url('img/hb_peach_loose.jpg') center/cover;opacity:.12;z-index:0}
+.vgrid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.vcard{background:rgba(255,255,255,.96);border-radius:12px;padding:26px 24px;box-shadow:0 16px 30px rgba(0,0,0,.12)}
+.vcard .ic{width:46px;height:46px;color:var(--orange);margin-bottom:14px}
+.vcard h3{font-family:var(--font-head);font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.01em;color:var(--navy);margin-bottom:8px;line-height:1.1}
+.vcard p{font-size:14.5px;color:#55504c}
+
+.specs{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.specs .wrap{display:grid;grid-template-columns:1fr .85fr;gap:clamp(32px,6vw,72px);align-items:center}
+.specs .label{color:var(--hb-yellow)}
+.specs h2{font-size:clamp(32px,4.4vw,52px);margin:14px 0 18px}
+.specs p{color:rgba(255,255,255,.8);margin-bottom:24px;max-width:42ch}
+.spec-table{width:100%;border-collapse:collapse}
+.spec-table td{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.16);font-size:15px}
+.spec-table td:first-child{font-family:var(--font-head);font-weight:500;text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:var(--hb-yellow);width:46%}
+.spec-table td:last-child{font-weight:600}
+.price-row{display:flex;gap:26px;margin-top:24px}
+.price-row .pp .k{font-family:var(--font-head);font-weight:500;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.price-row .pp .v{font-family:var(--font-head);font-weight:800;font-size:42px;line-height:.95;color:var(--hb-yellow)}
+.specs-media{position:relative;display:flex;justify-content:center;align-items:center;min-height:420px}
+.specs-media::before{content:"";position:absolute;width:90%;height:80%;left:50%;top:52%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(237,115,40,.45) 0%,rgba(237,115,40,0) 70%);z-index:0}
+.specs-media .fust2{position:relative;z-index:1;height:clamp(320px,46vh,420px);width:auto;filter:drop-shadow(0 22px 36px rgba(0,0,0,.5))}
+
+/* SAMPLES — groene lemon-sectie voor afwisseling */
+.samples{position:relative;color:#fff;text-align:center;overflow:hidden;
+  background:url('img/hb_lemon_green.jpg') center/cover no-repeat, var(--lemon)}
+.samples::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(74,110,28,.84),rgba(54,84,18,.92))}
+.samples .wrap{position:relative;z-index:2}
+.samples h2{font-size:clamp(36px,5.5vw,68px)}
+.samples p{color:rgba(255,255,255,.9);max-width:48ch;margin:14px auto 28px}
+.samples .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+footer{background:var(--navy);color:rgba(255,255,255,.78);padding:60px clamp(20px,5vw,40px) 38px}
+.foot{max-width:var(--maxw);margin:0 auto;display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.foot .cols{display:flex;gap:56px;flex-wrap:wrap}
+.foot h4{font-family:var(--font-head);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--hb-yellow);margin-bottom:13px}
+.foot .cols a{display:block;font-size:14px;margin-bottom:9px}.foot .cols a:hover{color:#fff}
+.foot-bottom{max-width:var(--maxw);margin:38px auto 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.14);font-family:var(--font-head);font-weight:500;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+
+@media(max-width:880px){
+  nav ul{display:none}
+  .hero-grid,.specs .wrap{grid-template-columns:1fr}
+  .hero-visual{min-height:360px;order:-1}
+  .vgrid{grid-template-columns:1fr}
+  .flavors{grid-template-columns:1fr;max-width:420px}
+}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.scroll-ind{animation:none}}
+</style>
+</head>
+<body>
+<div id="hbgate" style="position:fixed;inset:0;z-index:99999;background:#112337;display:flex;align-items:center;justify-content:center">
+<div style="text-align:center;max-width:340px;padding:28px;font-family:Jost,Arial,sans-serif">
+<div style="font-weight:800;font-size:26px;letter-spacing:.16em;color:#ffda00;text-transform:uppercase">Horecabier</div>
+<p style="color:#fff;opacity:.8;margin:14px 0 22px;font-size:14px">Beveiligde preview. Vul het wachtwoord in.</p>
+<input id="hbpw" type="password" placeholder="Wachtwoord" autofocus style="width:100%;padding:14px 16px;border-radius:8px;border:none;font-size:15px;outline:none;margin-bottom:12px;box-sizing:border-box">
+<button id="hbbtn" style="width:100%;padding:14px;border:none;border-radius:8px;background:#ffda00;color:#112337;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">Bekijken</button>
+<div id="hberr" style="color:#ff9b8a;font-size:13px;margin-top:10px;height:16px"></div></div></div>
+<script>(function(){function ok(){sessionStorage.setItem("hbok","1");var g=document.getElementById("hbgate");if(g)g.remove();document.documentElement.style.overflow="";}
+if(sessionStorage.getItem("hbok")==="1"){ok();return;}document.documentElement.style.overflow="hidden";
+function chk(){if(document.getElementById("hbpw").value==="hb2026"){ok();}else{document.getElementById("hberr").textContent="Onjuist wachtwoord";}}
+document.getElementById("hbbtn").onclick=chk;
+document.getElementById("hbpw").addEventListener("keydown",function(e){if(e.key==="Enter")chk();});})();</script>
+
+<header id="hdr">
+  <a href="#top" class="brand"><img src="img/hb_logo_white.png" class="logo-img" alt="Horecabier"></a>
+  <nav><ul>
+    <li><a href="#smaken">Smaken</a></li>
+    <li><a href="#voordelen">Voordelen</a></li>
+    <li><a href="#specs">Specificaties</a></li>
+    <li><a href="#samples">Gratis samples</a></li>
+  </ul></nav>
+  <a href="#samples" class="btn btn-yellow nav-cta">Vraag samples aan</a>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <span class="badge-new reveal">Nieuw</span>
+      <h1 class="reveal d1">Hard<br>Iced Tea</h1>
+      <div class="sub reveal d1">Nu ook op 20 liter fust</div>
+      <p class="reveal d2">De frisse ijsthee met een twist, zo van de tap. Licht, toegankelijk en gemaakt voor warme dagen. 4,5% alcohol.</p>
+      <div class="chips reveal d2">
+        <span class="fchip lemon"><span class="d"></span>Lemon</span>
+        <span class="fchip peach"><span class="d"></span>Peach</span>
+      </div>
+      <div class="hero-actions reveal d3">
+        <a href="#samples" class="btn btn-yellow">Vraag gratis samples aan</a>
+        <a href="#smaken" class="btn btn-ghost">Beide smaken <span class="arrow">→</span></a>
+      </div>
+    </div>
+    <div class="hero-visual reveal d2">
+      <img class="fust" src="img/hb_fust_cut.png" alt="Hard Iced Tea 20 liter fust">
+      <div class="pricetag">
+        <div class="t">20 liter</div>
+        <div class="p">€75,-</div>
+        <div class="s">4,5% alc · 69 kcal/250ml</div>
+      </div>
+    </div>
+  </div>
+  <a href="#smaken" class="scroll-ind" aria-label="Scroll"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
+</section>
+
+<div class="usp">
+  <span>Hogere marge</span><span class="sep">·</span>
+  <span>Sneller &amp; efficiënter</span><span class="sep">·</span>
+  <span>Minder afval &amp; geen statiegeld</span><span class="sep">·</span>
+  <span>Minder opslag</span>
+</div>
+
+<!-- SMAKEN -->
+<section id="smaken">
+  <div class="wrap">
+    <div class="head">
+      <span class="label reveal">Twee smaken, één fust</span>
+      <h2 class="reveal d1"><span class="lem">Lemon</span> &amp; <span class="pea">Peach</span></h2>
+      <p class="reveal d1">De vertrouwde <strong>Lemon</strong> en de nieuwe <strong>Peach</strong>, allebei op 20 liter fust. Kies één, of zet ze lekker naast elkaar op de tap.</p>
+    </div>
+    <div class="flavors">
+      <article class="flavor lemon reveal">
+        <img src="img/hb_poster_lemon.png" alt="Hard Iced Tea Lemon">
+        <div class="cap"><h3>Lemon</h3><div class="meta">Fris &amp; spuitend<br>20L fust</div></div>
+      </article>
+      <article class="flavor peach reveal d1">
+        <img src="img/hb_poster_peach.png" alt="Hard Iced Tea Peach">
+        <div class="cap"><h3>Peach</h3><div class="meta">Zacht &amp; sappig<br>20L fust</div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- VOORDELEN -->
+<section class="voordelen" id="voordelen">
+  <div class="wrap">
+    <div class="head">
+      <span class="label reveal" style="color:#fff">Waarom op fust</span>
+      <h2 class="reveal d1" style="color:#fff">Slimmer achter de bar</h2>
+    </div>
+    <div class="vgrid">
+      <div class="vcard reveal"><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><circle cx="24" cy="24" r="20"/><path d="M24 13v22M19 18h7a4 4 0 010 8h-6a4 4 0 000 8h8"/></svg><h3>Hogere marge</h3><p>Betere marges dan blikverkoop, meer rendement per glas.</p></div>
+      <div class="vcard reveal d1"><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M26 6 12 26h10l-2 16 16-22H26l2-14Z"/></svg><h3>Sneller &amp; efficiënter</h3><p>Direct van de tap, sneller schenken en minder handelingen.</p></div>
+      <div class="vcard reveal d2"><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 16h20l-2 24H16L14 16Z"/><path d="M19 16c0-7 10-7 10 0M10 16h28"/></svg><h3>Minder afval</h3><p>Geen blikjes, geen statiegeld en minder restafval.</p></div>
+      <div class="vcard reveal"><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 18 24 8l16 10v22H8V18Z"/><path d="M18 40V26h12v14"/></svg><h3>Minder opslag</h3><p>Eén fust vervangt tientallen blikjes, scheelt ruimte.</p></div>
+      <div class="vcard reveal d1"><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M24 4l5 14h15l-12 9 5 15-13-9-13 9 5-15-12-9h15Z"/></svg><h3>Constante kwaliteit</h3><p>Elke uitgifte hetzelfde, vers en snel geserveerd.</p></div>
+      <div class="vcard reveal d2"><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><circle cx="24" cy="24" r="20"/><path d="M16 24l6 6 12-12"/></svg><h3>Toegankelijk</h3><p>Licht met 4,5% alcohol, een twist die een breed publiek aanspreekt.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECS -->
+<section class="specs" id="specs">
+  <div class="wrap">
+    <div class="specs-copy">
+      <span class="label reveal">Productinformatie</span>
+      <h2 class="reveal d1">Hard Iced Tea Peach 20L</h2>
+      <p class="reveal d1">De frisse ijsthee-smaak met een subtiele perziktwist. Vanaf volgende week verkrijgbaar op 20 liter fust. De Lemon is uiteraard ook gewoon leverbaar.</p>
+      <table class="spec-table reveal d2">
+        <tr><td>Artikelnummer</td><td>2070</td></tr>
+        <tr><td>EAN-code</td><td>8720892709639</td></tr>
+        <tr><td>Inhoud</td><td>20 liter fust</td></tr>
+        <tr><td>Alcohol</td><td>4,5%</td></tr>
+        <tr><td>Calorieën</td><td>69 kcal per 250 ml</td></tr>
+      </table>
+      <div class="price-row reveal d2">
+        <div class="pp"><div class="k">Inkoopprijs</div><div class="v">€60,-</div></div>
+        <div class="pp"><div class="k">Verkoopprijs</div><div class="v">€75,-</div></div>
+      </div>
+    </div>
+    <div class="specs-media reveal d2">
+      <img class="fust2" src="img/hb_fust_cut.png" alt="Hard Iced Tea fust">
+    </div>
+  </div>
+</section>
+
+<!-- SAMPLES (groen / lemon) -->
+<section class="samples" id="samples">
+  <div class="wrap">
+    <span class="label reveal" style="color:var(--hb-yellow)">Gratis samples</span>
+    <h2 class="reveal d1">Proef Lemon &amp; Peach</h2>
+    <p class="reveal d1">Net als bij de Lemon stellen we ook voor de Peach gratis samples beschikbaar. Zo ervaar je beide smaken en beoordeel je of ze in jullie assortiment passen.</p>
+    <div class="cta reveal d2">
+      <a href="mailto:info@horecabier.nl?subject=Sample%20aanvraag%20Hard%20Iced%20Tea" class="btn btn-yellow">Vraag een sample aan</a>
+      <a href="tel:0229275050" class="btn btn-ghost">Bel 0229 - 27 50 50 <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot">
+    <div>
+      <a href="#top" class="brand"><img src="img/hb_logo_white.png" class="logo-img" alt="Horecabier"></a>
+      <p style="margin-top:14px;font-size:14px;color:rgba(255,255,255,.6);max-width:30ch">Bier en dranken voor de horeca. Gebrouwen in Nederland, geleverd zonder gedoe.</p>
+    </div>
+    <div class="cols">
+      <div><h4>Hard Iced Tea</h4><a href="#smaken">Smaken</a><a href="#voordelen">Voordelen</a><a href="#specs">Specificaties</a></div>
+      <div><h4>Horecabier</h4><a href="#">Over ons</a><a href="#">Ons assortiment</a><a href="#samples">Contact</a></div>
+      <div><h4>Contact</h4><a href="mailto:info@horecabier.nl">info@horecabier.nl</a><a href="tel:0229275050">0229 - 27 50 50</a><a href="#">De Corantijn 28, Zwaag</a></div>
+    </div>
+  </div>
+  <div class="foot-bottom"><span>© 2026 Horecabier.nl B.V.</span><span>Voorbeeld-landingspagina · Hard Iced Tea campagne</span></div>
+</footer>
+
+<script>
+const hdr=document.getElementById('hdr');
+addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>40),{passive:true});
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.16});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
