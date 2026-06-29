@@ -140,18 +140,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.78);padding:56px clamp(20p
 </style>
 </head>
 <body>
-<div id="hbgate" style="position:fixed;inset:0;z-index:99999;background:#112337;display:flex;align-items:center;justify-content:center">
-<div style="text-align:center;max-width:340px;padding:28px;font-family:Jost,Arial,sans-serif">
-<div style="font-weight:800;font-size:26px;letter-spacing:.16em;color:#ffda00;text-transform:uppercase">Horecabier</div>
-<p style="color:#fff;opacity:.8;margin:14px 0 22px;font-size:14px">Beveiligde preview. Vul het wachtwoord in.</p>
-<input id="hbpw" type="password" placeholder="Wachtwoord" autofocus style="width:100%;padding:14px 16px;border-radius:8px;border:none;font-size:15px;outline:none;margin-bottom:12px;box-sizing:border-box">
-<button id="hbbtn" style="width:100%;padding:14px;border:none;border-radius:8px;background:#ffda00;color:#112337;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">Bekijken</button>
-<div id="hberr" style="color:#ff9b8a;font-size:13px;margin-top:10px;height:16px"></div></div></div>
-<script>(function(){function ok(){sessionStorage.setItem("hbok","1");var g=document.getElementById("hbgate");if(g)g.remove();document.documentElement.style.overflow="";}
-if(sessionStorage.getItem("hbok")==="1"){ok();return;}document.documentElement.style.overflow="hidden";
-function chk(){if(document.getElementById("hbpw").value==="hb2026"){ok();}else{document.getElementById("hberr").textContent="Onjuist wachtwoord";}}
-document.getElementById("hbbtn").onclick=chk;
-document.getElementById("hbpw").addEventListener("keydown",function(e){if(e.key==="Enter")chk();});})();</script>
+<a href="index.html" aria-label="Terug naar overzicht" style="position:fixed;left:18px;bottom:18px;z-index:9000;display:inline-flex;align-items:center;gap:8px;background:#112337;color:#fff;font-family:Jost,Arial,sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:12px 20px;border-radius:999px;text-decoration:none;box-shadow:0 8px 22px rgba(0,0,0,.28)">&larr; Terug naar overzicht</a>
 
 <header id="hdr">
   <a href="#top" aria-label="Horecabier"><img class="logo-img" src="img/hb_logo.png" alt="Horecabier"></a>
